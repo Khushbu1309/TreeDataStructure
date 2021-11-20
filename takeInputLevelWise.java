@@ -59,11 +59,23 @@ public class takeInputLevelWise {
 		for(int i=0;i<root.children.size();i++) {
 			count++;
 			NumberOfNodesInTree(root.children.get(i));
-		}
-				
+		}		
 		return count;
-		
-		
+	}
+	public static int largest(TreeNode<Integer> root) {
+		// TODO Auto-generated method stub
+		if(root==null) {
+			return Integer.MIN_VALUE;
+		}
+		int large=root.data;
+		for(int i=0;i<root.children.size();i++) {
+			int largestFromRestNodes=largest(root.children.get(i));
+			if(largestFromRestNodes>large) {
+				large=largestFromRestNodes;
+			}
+			
+		}
+		return large;
 	}
 
 }
