@@ -13,9 +13,28 @@ public class takeInputLevelWise {
 		int nodesCount=NumberOfNodesInTree(root);
 		System.out.println();
 		System.out.println(count);
-	
+		int LargestNodeWithData=largest(root);
+		System.out.println(LargestNodeWithData);
 
 	}
+	
+
+	public static int largest(TreeNode<Integer> root) {
+		// TODO Auto-generated method stub
+		if(root==null) {
+			return Integer.MIN_VALUE;
+		}
+		int large=root.data;
+		for(int i=0;i<root.children.size();i++) {
+			int largestFromRestNodes=largest(root.children.get(i));
+			if(largestFromRestNodes>large) {
+				large=largestFromRestNodes;
+			}
+			
+		}
+		return large;
+	}
+
 
 	public static TreeNode<Integer> TakeInput(){
 		@SuppressWarnings("resource")
